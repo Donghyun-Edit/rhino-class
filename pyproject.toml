@@ -1,0 +1,36 @@
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.8"
+shapely = "*"
+matplotlib = "*"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "*"
+pylint = "2.16.2"
+black = "24.3.0"
+pre-commit = "3.5.0"
+pyright = "1.1.372"
+
+
+[tool.pyright]
+typeCheckingMode = "standard"
+reportMissingImports = "none"                  # 로컬 라이노 모듈은 찾지 못 함
+reportMissingModuleSource = "none"             # 로컬 라이노 모듈은 찾지 못 함
+reportUnnecessaryTypeIgnoreComment = "warning" # 불필요한 비활성화 주석 방지
+
+[tool.pylint.main]
+ignored-modules = [
+    "scriptcontext",
+    "Rhino",
+    "rhinoscriptsyntax",
+    "System",
+    "ghpythonlib",
+    "Grasshopper",
+    "Eto",
+]
+
+[tool.pylint."messages control"]
+enable = ["useless-suppression"]             # 불필요한 비활성화 주석 방지
+disable = ["typecheck", "missing-docstring","consider-using-f-string"]
