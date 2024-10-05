@@ -378,6 +378,36 @@ unicode = ["unicodedata2 (>=15.1.0)"]
 woff = ["brotli (>=1.0.1)", "brotlicffi (>=0.8.0)", "zopfli (>=0.1.4)"]
 
 [[package]]
+name = "gh-io-stubs"
+version = "7.7.21140"
+description = "Stubs for GH_IO"
+optional = false
+python-versions = "*"
+files = [
+    {file = "GH_IO-stubs-7.7.21140.tar.gz", hash = "sha256:557293ee6374ea73b0f8c4cf4ec3fd25c4b2b11a315ab9e3c6da6db1c8de62f5"},
+]
+
+[[package]]
+name = "gh-util-stubs"
+version = "7.7.21140"
+description = "Stubs for GH_Util"
+optional = false
+python-versions = "*"
+files = [
+    {file = "GH_Util-stubs-7.7.21140.tar.gz", hash = "sha256:f0d47d24698a16adfb868a5cff40f3a9bff02c4fb4f1eb5a3cbd8cde734b9062"},
+]
+
+[[package]]
+name = "grasshopper-stubs"
+version = "7.7.21140"
+description = "Stubs for Grasshopper"
+optional = false
+python-versions = "*"
+files = [
+    {file = "Grasshopper-stubs-7.7.21140.tar.gz", hash = "sha256:9f9aec05041f16cb26aa3942c3f4c51198bf012f2b69f605dac0a2a3be015a4c"},
+]
+
+[[package]]
 name = "identify"
 version = "2.6.1"
 description = "File identification library for Python"
@@ -1036,6 +1066,21 @@ files = [
 ]
 
 [[package]]
+name = "rhino-stubs"
+version = "7.7.21140"
+description = "Stubs for RhinoCommon"
+optional = false
+python-versions = "*"
+files = [
+    {file = "Rhino-stubs-7.7.21140.tar.gz", hash = "sha256:4df14e461de5493d6fa2e110c81cebdf79f8aebc0506f29e0ca968967aff350b"},
+]
+
+[package.dependencies]
+GH_IO-stubs = "*"
+GH_Util-stubs = "*"
+Grasshopper-stubs = "*"
+
+[[package]]
 name = "shapely"
 version = "2.0.6"
 description = "Manipulation and analysis of geometric objects"
@@ -1258,4 +1303,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "9b42c8c1f9112a3a0457a99d3acba5a262c5288eb8f9a7729a1c83e6bc8e486d"
+content-hash = "44345796e0a5f7f6aec0f29d3062bd08e0edaf7ee33e52e92a459e6e3b337628"
