@@ -3,8 +3,6 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.9"
-shapely = "*"
-matplotlib = "*"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "*"
@@ -36,7 +34,7 @@ enable = ["useless-suppression"] # 불필요한 비활성화 주석 방지
 disable = [
     "typecheck",
     "missing-docstring",
-    "consider-using-f-string",
-    "super-with-arguments",
-    "raise-missing-from",
+    "consider-using-f-string",  # 라이노 7의 파이썬 2.7 고려
+    "super-with-arguments",  # 라이노 7의 파이썬 2.7 고려
+    "raise-missing-from",  # 라이노 7의 파이썬 2.7 고려
 ]
