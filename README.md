@@ -18,6 +18,8 @@ python -m pipx ensurepath
 pipx install poetry
 ```
 
+변경된 시스템 Path를 VScode가 인식하도록 하기 위해서는 VScode를 한 번 껐다 켜 주어야 한다.
+
 ### 파이썬 패키지 설치
 
 ```bash
