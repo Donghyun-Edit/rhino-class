@@ -30,6 +30,12 @@ poetry install
 
 VScode 창에서 `Ctrl+Shift+P`로 `Python: Select Interpreter` 명령어를 실행하고, `poetry`로 생성된 가상환경 경로의 파이썬을 선택한다.
 
+만약 Poetry로 생성된 가상환경이 Interpreter 목록에 없다면, 아래 터미널 명령어에서 나오는 경로를 직접 추가한다.
+
+```bash
+poetry env info --path
+```
+
 ## 실행 방법
 
 기본적으로 `runner.ghx` 파일을 실행했을 때, 그래스호퍼에서 `GhPython Script` 컴포넌트들이 `logic/` 폴더 내부의 파이썬 모듈들을 `import`하여 사용하는 구조다.
