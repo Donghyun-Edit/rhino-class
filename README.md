@@ -6,19 +6,14 @@ VScode에서 터미널 명령어는 `Ctrl+J`로 실행 가능하다.
 
 ### 파이썬 준비
 
-[파이썬](https://www.python.org/) 3.9 이상의 버전을 설치한다.
+[파이썬](https://www.python.org/) 3.9 이상의 버전을 설치한다. 또한, [Poetry](https://python-poetry.org/docs)가 설치되지 않았다면 준비해 놓는다.
 
-### `poetry` 준비
-
-`poetry`는 가상환경과 패키지 관리를 자동화해 주는 의존성 관리 도구다. 프로젝트 폴더의 `pyproject.toml`이라는 파일에 적힌 그대로 파이썬 환경을 구축하는 것을 돕는다.
+아래 터미널 명령어로 시스템이 준비되었는지 확인이 가능하다.
 
 ```bash
-pip install pipx
-python -m pipx ensurepath
-pipx install poetry
+python --version
+poetry --version
 ```
-
-변경된 시스템 Path를 VScode가 인식하도록 하기 위해서는 VScode를 한 번 껐다 켜 주어야 한다.
 
 ### 파이썬 패키지 설치
 
