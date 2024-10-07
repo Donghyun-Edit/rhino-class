@@ -45,11 +45,11 @@ class ModuleWatcher:
 
     def create_python_watcher(self, dir_name):
         # type: (str) -> Any
-        return GH_FileWatcher.CreateDirectoryWatcher.Overloads[  # type: ignore
+        return GH_FileWatcher.CreateDirectoryWatcher.Overloads[
             System.String,
             System.String,
             GH_FileWatcherEvents,
-            GH_FileWatcher.FileChanged,  # type: ignore
+            GH_FileWatcher.FileChanged,
         ](
             dir_name,
             "*.py",
