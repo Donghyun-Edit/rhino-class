@@ -76,7 +76,8 @@ def prepend_startlines(filepath):
         ),
         "",
     ]
-    if filelines and filelines[0] == expected_start_lines[0]:
+    line_count = len(expected_start_lines)
+    if filelines[:line_count] == expected_start_lines:
         return
 
     # 호환성 코드를 파일에 추가한다.
