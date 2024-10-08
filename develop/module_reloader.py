@@ -1,8 +1,11 @@
 # -*- coding:utf-8 -*-
+# 라이노 7에서의 구형 파이썬 2를 지원하기 위한 코드
+import polyfill  # pylint:disable=C0411,W0611
 
 import os
 import importlib
 import sys
+from pathlib import Path
 
 import Rhino
 
@@ -33,11 +36,12 @@ def perform_reload():
         del sys.modules[module_name]
 
     for reload_folder in RELOAD_FOLDERS:
-        for subdir, _, files in os.walk(reload_folder):
-            for f in files:
-                if not f.endswith(".py") or f == "__init__.py":
+        for subdir, _, filenames in os.walk(reload_folder):
+            for filename in filenames:
+                if not filename.endswith(".py"):
                     continue
-                module_name = get_module_name(subdir, f)
+                prepend_startlines(reload_folder / subdir / filename)
+                module_name = get_module_name(subdir, filename)
                 print(module_name)
                 # 중복 리로드 막기
                 if module_name in sys.modules:
@@ -47,6 +51,38 @@ def perform_reload():
                     reload(importlib.import_module(module_name))  # type: ignore
                 except Exception:  # pylint:disable=broad-exception-caught
                     pass
+
+
+def prepend_startlines(filepath):
+    # type: (Path) -> None
+
+    # 라이노 8의 신형 파이썬 3에서는 호환성 코드가 필요 없다.
+    if sys.version_info.major >= 3:
+        return
+
+    # 파이썬 2 이하에서는 모든 파일에 호환성 코드를 작성한다.
+    with open(filepath, "rb") as file:
+        filelines = file.read().decode("utf-8").split("\n")
+        filelines = [l.strip("\r") for l in filelines]
+
+    # 이미 잘 추가되어 있다면 신경 쓰지 않는다.
+    expected_start_lines = [
+        "# -*- coding:utf-8 -*-",
+        "# 라이노 7에서의 구형 파이썬 2를 지원하기 위한 코드",
+        (
+            "import polyfill  # pylint:disable=C0411"
+            if filepath.name == "__init__.py"
+            else "import polyfill  # pylint:disable=C0411,W0611"
+        ),
+        "",
+    ]
+    if filelines and filelines[0] == expected_start_lines[0]:
+        return
+
+    # 호환성 코드를 파일에 추가한다.
+    freshlines = expected_start_lines + filelines
+    with open(filepath, "wb") as file:
+        file.write("\n".join(freshlines).encode("utf-8"))
 
 
 def reload_modules(run):
