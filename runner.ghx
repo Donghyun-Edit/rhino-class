@@ -99,14 +99,14 @@
                   <items count="12">
                     <item name="CodeInput" type_name="gh_string" type_code="10">import os
 import sys
+import Grasshopper as gh
 
 # Import가 제대로 작동하도록 PATH를 업데이트한다.
-# 그렇기 때문에 이 컴포넌트는 가장 먼저 실행되어야 한다.
-# 이 파이썬 컴포넌트를 `ctrl+B`로 가장 뒤로 보내 놓아야
-# 모든 컴포넌트들 중 제일 먼저 실행된다.
 root_dir = os.path.dirname(ghdoc.Path)
 if root_dir not in sys.path:
     sys.path.append(root_dir)
+    # 그래스호퍼 문서 전체의 Recompute를 수행한다.
+    gh.Instances.ActiveCanvas.Document.ExpireSolution()
 
 from develop import reload_modules
 
