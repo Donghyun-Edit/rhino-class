@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
-import polyfill  # pylint: disable=C0411,W0611
+import polyfill  # pylint:disable=C0411,W0611
 
-import clr  # pylint: disable=import-error
+import clr  # pylint:disable=import-error
 
-# pylint: disable=wrong-import-position
+# pylint:disable=wrong-import-position
 clr.AddReference("System.Core")
 
-# pylint: disable=wrong-import-order
+# pylint:disable=wrong-import-order
 import os
 import time
 from typing import Any

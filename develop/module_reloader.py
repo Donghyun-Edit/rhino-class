@@ -43,16 +43,16 @@ def perform_reload():
                 if module_name in sys.modules:
                     continue
                 try:
-                    # pylint: disable=undefined-variable
+                    # pylint:disable=undefined-variable
                     reload(importlib.import_module(module_name))  # type: ignore
-                except Exception:  # pylint: disable=broad-exception-caught
+                except Exception:  # pylint:disable=broad-exception-caught
                     pass
 
 
 def reload_modules(run):
     # type: (bool) -> None
 
-    if Rhino.Runtime.HostUtils.RunningAsRhinoInside:
+    if Rhino.Runtime.HostUtils.RunningAsRhinoInside:  # type: ignore
         return
 
     # `run`이 거짓일 때 실행하는 것은 버튼을 '놓는 순간' 실행되도록 하기 위함임

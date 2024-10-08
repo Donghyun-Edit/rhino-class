@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import polyfill  # pylint: disable=C0411,W0611
+import polyfill  # pylint:disable=C0411,W0611
 
 from pathlib import Path
 

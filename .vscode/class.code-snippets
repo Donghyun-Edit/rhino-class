@@ -4,7 +4,7 @@
     "prefix": "rhinoseven",
     "body": [
       "# -*- coding:utf-8 -*-",
-      "import polyfill  # pylint: disable=C0411,W0611",
+      "import polyfill  # pylint:disable=C0411,W0611",
       ""
     ],
   }

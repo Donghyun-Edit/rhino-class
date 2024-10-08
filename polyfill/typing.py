@@ -15,11 +15,11 @@ class TypingMeta(type):
         return cls
 
 
-class TypingBase:  # pylint: disable=too-few-public-methods
+class TypingBase:  # pylint:disable=too-few-public-methods
     __metaclass__ = TypingMeta
 
 
-class TypingFake:  # pylint: disable=too-few-public-methods
+class TypingFake:  # pylint:disable=too-few-public-methods
     def __init__(self, *args, **kwargs):
         """
         아무 파라미터를 제공하여 인스턴스 생성을 가능하게 만든다.
@@ -30,7 +30,7 @@ class TypingFake:  # pylint: disable=too-few-public-methods
 
 
 # 그대로 쓰이는 값들
-Any = None  # pylint: disable=invalid-name
+Any = None  # pylint:disable=invalid-name
 
 # `[]`로 탐색되는 값들
 Optional = TypingBase
