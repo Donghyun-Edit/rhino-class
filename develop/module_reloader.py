@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-# 라이노 7에서의 구형 파이썬 2를 지원하기 위한 코드
+# 라이노 7에서의 구형 파이썬 2를 지원하기 위한 호환 코드
 import polyfill  # pylint:disable=C0411,W0611
 
 import os
@@ -68,7 +68,7 @@ def prepend_startlines(filepath):
     # 이미 잘 추가되어 있다면 신경 쓰지 않는다.
     expected_start_lines = [
         "# -*- coding:utf-8 -*-",
-        "# 라이노 7에서의 구형 파이썬 2를 지원하기 위한 코드",
+        "# 라이노 7에서의 구형 파이썬 2를 지원하기 위한 호환 코드",
         (
             "import polyfill  # pylint:disable=C0411"
             if filepath.name == "__init__.py"
