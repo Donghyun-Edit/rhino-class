@@ -6,6 +6,7 @@ import polyfill  # pylint:disable=C0411,W0611
 import os
 import importlib
 import sys
+from typing import Optional
 from pathlib import Path
 
 import Rhino
@@ -13,17 +14,20 @@ import Rhino
 from .constants import ROOT_DIR
 
 
-# 성능 최적화를 위해 재로딩할 폴더 제한
-RELOAD_FOLDERS = [
-    ROOT_DIR / "logic",
-    ROOT_DIR / "develop",
-]
+# 성능 최적화를 위해 재로딩할 폴더를 제한한다.
+# `ROOT_DIR`의 바로 아래 폴더만을 적어야 한다.
+RELOAD_FOLDERS = ["logic", "develop"]
 
 
 def get_module_name(subdir, file_name):
-    # type: (str, str) -> str
-    base_name = subdir.replace(str(ROOT_DIR) + os.sep, "").replace(os.sep, ".")
-    return base_name + "." + file_name.replace(".py", "")
+    # type: (str, str) -> Optional[str]
+    parent = subdir.replace(str(ROOT_DIR) + os.sep, "").replace(os.sep, ".")
+    if not file_name.endswith(".py"):
+        return None
+    if file_name == "__init__.py":
+        return parent
+    base_name = file_name.replace(".py", "")
+    return "{}.{}".format(parent, base_name)
 
 
 def perform_reload():
@@ -31,12 +35,12 @@ def perform_reload():
 
     to_delete = []
     for module_name in sys.modules:
-        if any(module_name.startswith(f.name) for f in RELOAD_FOLDERS):
+        if any(module_name.startswith(f) for f in RELOAD_FOLDERS):
             to_delete.append(module_name)
     for module_name in to_delete:
         del sys.modules[module_name]
 
-    for reload_folder in RELOAD_FOLDERS:
+    for reload_folder in (ROOT_DIR / f for f in RELOAD_FOLDERS):
         for subdir, _, filenames in os.walk(reload_folder):
             for filename in filenames:
                 if not filename.endswith(".py"):

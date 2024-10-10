@@ -32,7 +32,7 @@ major_version = sys.version_info[0]
 if major_version == 2:
     polyfill_dir = os.path.dirname(__file__)
     if polyfill_dir not in sys.path:
-        sys.path.append(polyfill_dir)
+        sys.path.insert(0, polyfill_dir)
 
 # 파이썬 2.7에서 모듈은 존재하지만,
 # 일부 구현되지 않은 기능을 몽키패치한다.

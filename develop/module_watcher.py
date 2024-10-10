@@ -18,6 +18,7 @@ import scriptcontext as sc
 from Grasshopper.Kernel import GH_FileWatcher
 from Grasshopper.Kernel import GH_FileWatcherEvents
 
+from .constants import ROOT_DIR
 from .module_reloader import perform_reload, RELOAD_FOLDERS
 
 
@@ -33,7 +34,7 @@ class ModuleWatcher:
 
     def collect_watcher_list(self):
         # type: () -> None
-        for reload_folder in RELOAD_FOLDERS:
+        for reload_folder in (ROOT_DIR / f for f in RELOAD_FOLDERS):
             self.watcher_list.append(self.create_python_watcher(str(reload_folder)))
             for subdir, dirs, _ in os.walk(reload_folder):
                 for d in dirs:
@@ -78,11 +79,12 @@ def watch_modules(enable):
 
     sc.sticky[RELOAD_TIME_KEY] = time.time()
 
-    if not enable and WATCHER_KEY in sc.sticky:
-        print("Module watcher is disabled")
-        sc.sticky[WATCHER_KEY].dispose()
-        del sc.sticky[WATCHER_KEY]
+    if WATCHER_KEY in sc.sticky:
+        previous_watcher = sc.sticky.pop(WATCHER_KEY)  # type: ModuleWatcher
+        previous_watcher.dispose()
 
-    if enable and WATCHER_KEY not in sc.sticky:
+    if not enable:
+        print("Module watcher is disabled")
+    else:
         sc.sticky[WATCHER_KEY] = ModuleWatcher()
         print("Module watcher is enabled")
