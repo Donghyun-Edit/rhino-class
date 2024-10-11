@@ -43,10 +43,10 @@ def perform_reload():
     for reload_folder in (ROOT_DIR / f for f in RELOAD_FOLDERS):
         for subdir, _, filenames in os.walk(reload_folder):
             for filename in filenames:
-                if not filename.endswith(".py"):
+                module_name = get_module_name(subdir, filename)
+                if module_name is None:
                     continue
                 prepend_startlines(reload_folder / subdir / filename)
-                module_name = get_module_name(subdir, filename)
                 print(module_name)
                 # 중복 리로드 막기
                 if module_name in sys.modules:
