@@ -6,11 +6,13 @@ import polyfill  # pylint:disable=C0411,W0611
 import Rhino.Geometry as geo
 
 
-def say_hi():
-    print("HI")
+def say_hi(name):
+    # type: (str) -> None
+    print("HI {}".format(name))
 
 
 def draw_pentagon():
+    # type: () -> geo.PolylineCurve
     points = [
         geo.Point3d(2.5, 0.0, 0.0),
         geo.Point3d(3.0, 4.0, 0.0),

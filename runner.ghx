@@ -100,7 +100,7 @@
                     <item name="CodeInput" type_name="gh_string" type_code="10">from logic import say_hi, draw_pentagon
 
 
-say_hi()
+say_hi("MIKE")
 a = draw_pentagon()
 </item>
                     <item name="Description" type_name="gh_string" type_code="10">GhPython provides a Python script component</item>
