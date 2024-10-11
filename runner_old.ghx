@@ -97,10 +97,12 @@
               <chunks count="1">
                 <chunk name="Container">
                   <items count="12">
-                    <item name="CodeInput" type_name="gh_string" type_code="10">from logic import say_hi
+                    <item name="CodeInput" type_name="gh_string" type_code="10">from logic import say_hi, draw_pentagon
 
 
-say_hi()</item>
+say_hi()
+a = draw_pentagon()
+</item>
                     <item name="Description" type_name="gh_string" type_code="10">GhPython provides a Python script component</item>
                     <item name="EditorLocation" type_name="gh_drawing_point" type_code="30">
                       <X>418</X>
