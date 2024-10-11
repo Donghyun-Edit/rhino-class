@@ -79,11 +79,10 @@ def watch_modules(enable):
 
     sc.sticky[RELOAD_TIME_KEY] = time.time()
 
-    if WATCHER_KEY in sc.sticky:
-        previous_watcher = sc.sticky.pop(WATCHER_KEY)  # type: ModuleWatcher
-        previous_watcher.dispose()
-
     if not enable:
+        if WATCHER_KEY in sc.sticky:
+            previous_watcher = sc.sticky.pop(WATCHER_KEY)  # type: ModuleWatcher
+            previous_watcher.dispose()
         print("Module watcher is disabled")
     else:
         sc.sticky[WATCHER_KEY] = ModuleWatcher()

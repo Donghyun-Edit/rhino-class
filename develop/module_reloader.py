@@ -92,14 +92,13 @@ def prepend_startlines(filepath):
         file.write("\n".join(freshlines).encode("utf-8"))
 
 
-def reload_modules(run):
+def reload_modules(trigger):
     # type: (bool) -> None
 
     if Rhino.Runtime.HostUtils.RunningAsRhinoInside:  # type: ignore
         return
 
-    # `run`이 거짓일 때 실행하는 것은 버튼을 '놓는 순간' 실행되도록 하기 위함임
-    if run:
+    if not trigger:
         return
 
     perform_reload()
