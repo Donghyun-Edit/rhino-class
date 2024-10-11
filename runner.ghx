@@ -273,11 +273,40 @@ a = draw_pentagon()
               <chunks count="1">
                 <chunk name="Container">
                   <items count="12">
-                    <item name="CodeInput" type_name="gh_string" type_code="10">from develop import watch_modules, reload_modules
+                    <item name="CodeInput" type_name="gh_string" type_code="10">import os
+import sys
+import Grasshopper as gh
+import scriptcontext as sc
+
+
+def recompute_doc(e):
+    for obj in ghenv.Component.OnPingDocument().Objects:
+        if not obj.InstanceGuid == ghenv.Component.InstanceGuid:
+            obj.ExpireSolution(False)
+
+
+# Import가 제대로 작동하도록 PATH를 업데이트한다.
+root_dir = os.path.dirname(ghdoc.Path)
+if root_dir not in sys.path:
+    sys.path.append(root_dir)
+    # 로직 모듈을 불러들여 놓는다.
+    import logic
+    remember_key = "recomputed"
+    if remember_key not in sc.sticky:
+        # 그래스호퍼 문서 전체의 Recompute를 수행한다.
+        sc.sticky[remember_key] = True
+        ghenv.Component.OnPingDocument().ScheduleSolution(
+            100, 
+            recompute_doc
+        )
+
+
+from develop import watch_modules, reload_modules
 
 
 watch_modules(watch)
-reload_modules(reload)</item>
+reload_modules(reload)
+</item>
                     <item name="Description" type_name="gh_string" type_code="10">GhPython provides a Python script component</item>
                     <item name="EditorLocation" type_name="gh_drawing_point" type_code="30">
                       <X>224</X>
