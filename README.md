@@ -23,7 +23,7 @@ poetry install
 
 ### VScode에서 Python interpreter를 가상환경 경로로 지정
 
-VScode 창에서 `Ctrl+Shift+P`로 `Python: Select Interpreter` 명령어를 실행하고, `poetry`로 생성된 가상환경 경로의 파이썬을 선택한다.
+VScode 창에서 `Ctrl+Shift+P`로 `Python: Select Interpreter` 명령어를 실행하고, `poetry`로 생성된 가상환경 경로의 파이썬을 선택한다. 해당 파이썬은 라이노에 설치된 파이썬과는 다르지만, VScode 에디터에서 자동완성 및 코드 검사 등의 편의기능을 제공한다.
 
 만약 Poetry로 생성된 가상환경이 Interpreter 목록에 없다면, 아래 터미널 명령어에서 나오는 경로를 직접 추가한다.
 
