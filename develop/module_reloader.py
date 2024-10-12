@@ -45,8 +45,7 @@ def perform_reload():
                 if module_name in sys.modules:
                     continue
                 try:
-                    # pylint:disable=undefined-variable
-                    reload(importlib.import_module(module_name))  # type: ignore
+                    importlib.reload(importlib.import_module(module_name))
                 except Exception:  # pylint:disable=broad-exception-caught
                     pass
 
