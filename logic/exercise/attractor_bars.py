@@ -30,7 +30,7 @@ def draw_bars_with_attractors(attractors: list[geo.Point3d]):
         )
 
     # 그리드 배치점을 나열해 놓는다.
-    grid_points = []  # type: list[geo.Point3d]
+    grid_points: list[geo.Point3d] = []
     for x in range(100):
         for y in range(100):
             grid_points.append(geo.Point3d(x, y, 0))
