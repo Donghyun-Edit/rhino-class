@@ -3,4 +3,4 @@
 # 불러들이는 것이 가능해진다.
 from .sample_module import say_hi, draw_pentagon
 
-from .exercise import extrude_contours
+from .exercise import extrude_contours, draw_bars_with_attractors
