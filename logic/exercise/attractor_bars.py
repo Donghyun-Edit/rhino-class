@@ -8,6 +8,10 @@ DISPLAY_KEY = "my_display"
 
 
 def draw_bars_with_attractors(attractors: list[geo.Point3d]):
+    # `CustomDisplay` 객체를 재사용하기 위해 보관해 두고,
+    # 이미 보관되어 있다면 그것을 꺼내 쓴다.
+    # `sticky`는 라이노 파이썬에서 객체를 보관해 두고
+    # 영구적으로 재사용할 수 있는 `dict` 공간이다.
     if DISPLAY_KEY in sc.sticky:
         custom_display: dis.CustomDisplay = sc.sticky[DISPLAY_KEY]
         custom_display.Clear()
