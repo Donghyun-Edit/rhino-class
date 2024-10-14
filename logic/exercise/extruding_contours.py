@@ -8,7 +8,7 @@ def extrude_contours(contours: list[geo.Curve]) -> list[geo.Surface]:
 
     # 모든 커브를 반시계 방향으로 만든다.
     # 돌출시킬 때, 커브의 방향으로 법선(Normal)이 결정되기 때문이다.
-    contours = contours.copy()
+    contours = contours.copy()  # 원본 리스트를 건드리지 않기 위해 복제
     for contour in contours:
         clockwise = geo.CurveOrientation.Clockwise
         if contour.ClosedCurveOrientation() == clockwise:  # type: ignore
