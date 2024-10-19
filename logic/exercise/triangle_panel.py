@@ -1,6 +1,6 @@
-import Rhino.Geometry as geo
 import math
 import itertools
+import Rhino.Geometry as geo
 
 
 class TriPanel:
