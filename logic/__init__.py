@@ -2,3 +2,5 @@
 # 이를 통해 외부에서 `from logic import say_hi`로
 # 불러들이는 것이 가능해진다.
 from .sample_module import say_hi, draw_pentagon
+
+from .exercise import extrude_contours, draw_bars_with_attractors
